@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom'; 
+import { ArrowDown, ArrowRight } from 'lucide-react'; // Make sure ArrowRight is included here
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [scrolled, setScrolled] = useState(0);
