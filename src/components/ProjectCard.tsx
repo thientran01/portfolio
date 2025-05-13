@@ -57,7 +57,7 @@ const ProjectCard = ({ id, title, description, category, image, slug, isEmotiona
             <span className={`transition-colors duration-300 ${
               isHovered ? (isEmotional ? 'text-portfolio-periwinkle' : 'text-portfolio-deepblue') : 'text-black'
             }`}>
-              View Project
+              View Case Study
             </span>
             <ArrowRight 
               size={16} 
