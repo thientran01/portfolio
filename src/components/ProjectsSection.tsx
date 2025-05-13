@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Placeholder for project data
 const projectsData = [
