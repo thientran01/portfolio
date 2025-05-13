@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import Header from "@/components/Header";
+import NavigationSystem from "@/components/NavigationSystem";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -14,7 +14,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <CustomCursor />
-      <Header />
+      <NavigationSystem />
       <main className="flex-grow flex items-center justify-center">
         <div className="portfolio-container py-24 text-center">
           <h1 className="text-7xl font-bold mb-6">404</h1>

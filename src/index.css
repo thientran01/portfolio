@@ -121,6 +121,27 @@
   .page-transition {
     @apply transition-all duration-500 ease-in-out;
   }
+  
+  /* Navigation system specific styles */
+  .nav-item {
+    @apply relative overflow-hidden flex items-center;
+  }
+  
+  .nav-item-indicator {
+    @apply absolute bottom-0 left-0 h-[2px] bg-portfolio-periwinkle transform origin-left scale-x-0 transition-transform duration-300;
+  }
+  
+  .nav-item:hover .nav-item-indicator {
+    @apply scale-x-100;
+  }
+  
+  .nav-item-bubble {
+    @apply absolute opacity-0 transition-opacity duration-300 text-xs bg-portfolio-deepblue text-white px-2 py-1 rounded;
+  }
+  
+  .nav-item:hover .nav-item-bubble {
+    @apply opacity-100;
+  }
 }
 
 /* Custom cursor styles */
@@ -133,7 +154,12 @@
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+}
+
+.cursor-dot-active {
+  background-color: theme('colors.portfolio.deepblue');
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .cursor-outline {
@@ -145,11 +171,37 @@
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.cursor-outline-active {
+  width: 60px;
+  height: 60px;
+  border-color: theme('colors.portfolio.deepblue');
+  opacity: 0.5;
+}
+
+.cursor-outline-text {
+  width: 4px;
+  height: 30px;
+  border-radius: 1px;
+  border: none;
+  background-color: theme('colors.portfolio.deepblue');
+  opacity: 0.7;
 }
 
 *[data-cursor="pointer"]:hover ~ .cursor-outline {
   width: 60px;
   height: 60px;
   border-color: theme('colors.portfolio.deepblue');
+}
+
+/* Navigation highlight effect */
+.nav-highlight {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, theme('colors.portfolio.deepblue'), theme('colors.portfolio.periwinkle'));
+  transition: all 0.3s ease;
 }

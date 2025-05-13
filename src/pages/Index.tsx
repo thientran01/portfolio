@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import Header from '@/components/Header';
+import NavigationSystem from '@/components/NavigationSystem';
 import Hero from '@/components/Hero';
 import ProjectsSection from '@/components/ProjectsSection';
 import ApproachSection from '@/components/ApproachSection';
@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <CustomCursor />
-      <Header />
+      <NavigationSystem />
       <main>
         <Hero />
         <ProjectsSection />
