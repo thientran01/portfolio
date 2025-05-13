@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 0 0% 0%;  /* Changed to black */
+    --foreground: 0 0% 100%;  /* Changed to white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 0 0% 7%;  /* Dark card background */
+    --card-foreground: 0 0% 100%;  /* White text on cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;  /* White as primary */
+    --primary-foreground: 0 0% 0%;  /* Black text on primary buttons */
 
     --secondary: 224 80% 43%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.9%;
+    --muted: 0 0% 15%;  /* Dark muted background */
+    --muted-foreground: 0 0% 70%;  /* Light gray muted text */
 
     --accent: 236 100% 72%;
-    --accent-foreground: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 0%;
+    --border: 0 0% 20%;  /* Darker border color */
+    --input: 0 0% 20%;  /* Darker input background */
+    --ring: 224 80% 43%;  /* Blue ring color */
 
     --radius: 0.5rem;
   }
@@ -94,7 +94,7 @@
   
   .hover-card:hover {
     @apply -translate-y-1;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
   .gradient-text {

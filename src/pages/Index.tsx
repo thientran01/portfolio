@@ -13,11 +13,19 @@ import VisualMotif from '@/components/VisualMotifs';
 const Index = () => {
   useEffect(() => {
     // Update document title
-    document.title = 'UX Portfolio | Balancing Utility with Emotional Intelligence';
+    document.title = 'UX Portfolio | Designing Intuitive & Emotionally Intelligent Experiences';
+    
+    // Set the background color to black
+    document.body.style.backgroundColor = '#000000';
+    
+    return () => {
+      // Reset the background color when the component unmounts
+      document.body.style.backgroundColor = '';
+    };
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div className="min-h-screen relative overflow-x-hidden bg-black text-white">
       <CustomCursor />
       <NavigationSystem />
       <main>
