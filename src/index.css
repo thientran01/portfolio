@@ -142,6 +142,36 @@
   .nav-item:hover .nav-item-bubble {
     @apply opacity-100;
   }
+  
+  /* Brand elements */
+  .brand-grid-bg {
+    background-image: 
+      linear-gradient(to right, rgba(27, 44, 193, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(27, 44, 193, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .brand-wave-line {
+    position: relative;
+    height: 2px;
+  }
+  
+  .brand-wave-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #1B2CC1, #7692FF, #1B2CC1);
+    background-size: 200% 100%;
+    animation: wave-animation 8s infinite linear;
+  }
+  
+  @keyframes wave-animation {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
 }
 
 /* Custom cursor styles */
@@ -154,12 +184,21 @@
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, background-color 0.3s ease;
+  transition: transform 0.1s ease, background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .cursor-dot-active {
   background-color: theme('colors.portfolio.deepblue');
   transform: translate(-50%, -50%) scale(1.5);
+}
+
+.cursor-dot-nav {
+  background-color: white;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.cursor-dot-clicking {
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .cursor-outline {
@@ -181,6 +220,13 @@
   opacity: 0.5;
 }
 
+.cursor-outline-nav {
+  width: 80px;
+  height: 80px;
+  border-color: white;
+  opacity: 0.3;
+}
+
 .cursor-outline-text {
   width: 4px;
   height: 30px;
@@ -188,6 +234,10 @@
   border: none;
   background-color: theme('colors.portfolio.deepblue');
   opacity: 0.7;
+}
+
+.cursor-outline-clicking {
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 *[data-cursor="pointer"]:hover ~ .cursor-outline {

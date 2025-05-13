@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
@@ -12,6 +11,7 @@ import ChallengeSection from '@/components/ChallengeSection';
 import SolutionSection from '@/components/SolutionSection';
 import InsightCard from '@/components/InsightCard';
 import DataVisualization from '@/components/DataVisualization';
+import VisualMotif from '@/components/VisualMotifs';
 import { getCaseStudyData } from '@/data/caseStudies';
 
 const CaseStudy = () => {
@@ -50,8 +50,10 @@ const CaseStudy = () => {
     );
   }
 
+  const motifType = caseStudy.isEmotional ? 'emotional' : 'structured';
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
       <CustomCursor />
       <NavigationSystem />
       <main className="flex-grow">
@@ -62,13 +64,30 @@ const CaseStudy = () => {
           isEmotional={caseStudy.isEmotional}
         />
         
-        <div className="portfolio-container py-16">
+        <div className="portfolio-container py-16 relative">
+          {/* Background visual motif */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <VisualMotif 
+              type={motifType} 
+              position="top-right" 
+              size="lg" 
+              opacity={0.03} 
+            />
+            
+            <VisualMotif 
+              type="combined" 
+              position="bottom-left" 
+              size="lg" 
+              opacity={0.03}
+            />
+          </div>
+          
           {/* Back to projects link */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-16"
+            className="mb-16 relative z-10"
           >
             <Link
               to="/"
@@ -82,7 +101,7 @@ const CaseStudy = () => {
           
           {/* Project overview */}
           <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24 relative z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -133,59 +152,57 @@ const CaseStudy = () => {
             </div>
           </motion.div>
           
-          {/* Process timeline */}
-          <ProcessTimeline 
-            steps={caseStudy.process} 
-            isEmotional={caseStudy.isEmotional}
-          />
-          
-          {/* Challenge section */}
-          <ChallengeSection 
-            challenge={caseStudy.challenge}
-            researchMethods={caseStudy.researchMethods}
-            insights={caseStudy.insights}
-            isEmotional={caseStudy.isEmotional}
-          />
-          
-          {/* Key insights */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="my-24"
-          >
-            <h2 className="text-2xl mb-8">Key Insights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {caseStudy.keyInsights.map((insight, index) => (
-                <InsightCard 
-                  key={index}
-                  title={insight.title}
-                  description={insight.description}
-                  icon={insight.icon}
-                  isEmotional={caseStudy.isEmotional}
-                  index={index}
-                />
-              ))}
-            </div>
-          </motion.section>
-          
-          {/* Data visualization (only if available) */}
-          {caseStudy.dataPoints && caseStudy.dataPoints.length > 0 && (
-            <DataVisualization 
-              title={caseStudy.dataTitle || 'Research Results'}
-              data={caseStudy.dataPoints}
+          {/* Rest of the case study content */}
+          <div className="relative z-10">
+            <ProcessTimeline 
+              steps={caseStudy.process} 
               isEmotional={caseStudy.isEmotional}
             />
-          )}
-          
-          {/* Solution section */}
-          <SolutionSection 
-            solution={caseStudy.solution}
-            outcomes={caseStudy.outcomes}
-            images={caseStudy.solutionImages}
-            isEmotional={caseStudy.isEmotional}
-          />
+            
+            <ChallengeSection 
+              challenge={caseStudy.challenge}
+              researchMethods={caseStudy.researchMethods}
+              insights={caseStudy.insights}
+              isEmotional={caseStudy.isEmotional}
+            />
+            
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="my-24"
+            >
+              <h2 className="text-2xl mb-8">Key Insights</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {caseStudy.keyInsights.map((insight, index) => (
+                  <InsightCard 
+                    key={index}
+                    title={insight.title}
+                    description={insight.description}
+                    icon={insight.icon}
+                    isEmotional={caseStudy.isEmotional}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </motion.section>
+            
+            {caseStudy.dataPoints && caseStudy.dataPoints.length > 0 && (
+              <DataVisualization 
+                title={caseStudy.dataTitle || 'Research Results'}
+                data={caseStudy.dataPoints}
+                isEmotional={caseStudy.isEmotional}
+              />
+            )}
+            
+            <SolutionSection 
+              solution={caseStudy.solution}
+              outcomes={caseStudy.outcomes}
+              images={caseStudy.solutionImages}
+              isEmotional={caseStudy.isEmotional}
+            />
+          </div>
           
           {/* Next project */}
           {caseStudy.nextProject && (
@@ -194,7 +211,7 @@ const CaseStudy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mt-32 mb-16 text-center"
+              className="mt-32 mb-16 text-center relative z-10"
             >
               <p className="text-gray-400 mb-2">Next Case Study</p>
               <Link

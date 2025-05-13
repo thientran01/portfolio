@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import BrandLogo from './BrandLogo';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,10 +39,7 @@ const Header = () => {
       }`}
     >
       <div className="portfolio-container flex items-center justify-between">
-        <Link to="/" className="font-mono text-xl font-bold" data-cursor="pointer">
-          <span className="text-portfolio-black">UX</span>
-          <span className="text-portfolio-deepblue">Portfolio</span>
-        </Link>
+        <BrandLogo size="md" />
         
         {/* Desktop Navigation */}
         <nav className="hidden md:block">

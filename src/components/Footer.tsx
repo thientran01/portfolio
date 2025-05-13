@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import BrandLogo from './BrandLogo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,10 +13,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1 */}
           <div className="space-y-3">
-            <h3 className="font-mono font-bold text-lg mb-4">
-              <span className="text-portfolio-black">UX</span>
-              <span className="text-portfolio-deepblue">Portfolio</span>
-            </h3>
+            <div className="mb-4">
+              <BrandLogo size="sm" animated={false} />
+            </div>
             <p className="text-sm text-gray-600 max-w-sm">
               Balancing utility with emotional intelligence through thoughtful digital experiences.
             </p>
